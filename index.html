@@ -41,7 +41,7 @@
 <script>
     // Call the Netlify function — same domain, no CORS issues
     fetch('/.netlify/functions/get-visitors')
-        .then(response => response.json())  // parse the JSON response
+        .then(response => response.json()) 
         .then(visitors => {
             const list = document.getElementById('visitor-list');
             visitors.forEach(v => {
