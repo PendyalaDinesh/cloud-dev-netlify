@@ -36,6 +36,22 @@
         <li>Learning new technologies..</li>
     </ul>
 </section>
+<ul id="visitor-list"></ul>
+
+<script>
+    // Call the Netlify function — same domain, no CORS issues
+    fetch('/.netlify/functions/get-visitors')
+        .then(response => response.json())  // parse the JSON response
+        .then(visitors => {
+            const list = document.getElementById('visitor-list');
+            visitors.forEach(v => {
+                const item = document.createElement('li');
+                item.textContent = v.name + ' — ' + v.visited_at;
+                list.appendChild(item);
+            });
+        })
+        .catch(err => console.error('Function call failed:', err));
+</script>
 
 <footer>
     <p>© 2026 Dinesh</p>
